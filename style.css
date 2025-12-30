@@ -1,0 +1,245 @@
+@font-face {
+    font-family: 'Algerian';
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bg {
+    background: url("bg.jpg") no-repeat center center/cover;
+    height: 100vh;
+    color: #00ff66;
+}
+
+/* Welcome */
+.welcome-box {
+    text-align: center;
+    margin-top: 40px;
+    border: 2px solid #00ff66;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
+}
+
+.welcome-box span {
+    color: #00ff66;
+}
+
+/* Login */
+.login-box {
+    width: 300px;
+    margin: 60px auto;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #00ff66;
+    background: rgba(0,0,0,0.7);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    background: black;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+}
+
+.login-box button {
+    padding: 8px 20px;
+    background: #00ff66;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Game Layout */
+.top-bar {
+    padding: 10px 30px;
+    font-size: 22px;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* Game Board */
+#board {
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    width: 620px;
+    height: 500px;
+
+    background:
+        linear-gradient(145deg, rgba(0,255,102,0.08), rgba(0,0,0,0.9)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(0,255,102,0.04) 0px,
+            rgba(0,255,102,0.04) 1px,
+            transparent 1px,
+            transparent 24px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(0,255,102,0.04) 0px,
+            rgba(0,255,102,0.04) 1px,
+            transparent 1px,
+            transparent 24px
+        );
+
+    border-radius: 16px;
+    border: 3px solid #00ff66;
+
+    box-shadow:
+        0 0 20px rgba(0,255,102,0.4),
+        inset 0 0 30px rgba(0,255,102,0.15);
+}
+
+
+/* Snake */
+/* Snake Head */
+.head {
+    background: linear-gradient(135deg, #00ff99, #00cc66);
+    border-radius: 6px;
+    box-shadow:
+        0 0 8px #00ff66,
+        0 0 16px #00ff66;
+    position: relative;
+}
+
+/* Eyes */
+.head::before,
+.head::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: black;
+    border-radius: 50%;
+    top: 6px;
+}
+
+.head::before {
+    left: 5px;
+}
+
+.head::after {
+    right: 5px;
+}
+
+/* Snake Body */
+.snake {
+    background: linear-gradient(135deg, #009944, #00ff66);
+    border-radius: 5px;
+    box-shadow:
+        0 0 6px rgba(0, 255, 102, 0.8);
+}
+
+/* Food */
+.food {
+    background: radial-gradient(circle, #ff4444, #aa0000);
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px red,
+        0 0 16px red;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Algerian;
+    font-size: 26px;
+    color: #00ff66;
+    text-shadow:
+        0 0 8px #00ff66,
+        0 0 20px #00ff66;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+/* Info Panel */
+.info-panel {
+    margin-left: 40px;
+    padding: 25px 30px;
+    min-width: 260px;
+
+    background: rgba(0, 0, 0, 0.75);
+    border: 2px solid #00ff66;
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 20px rgba(0,255,102,0.35),
+        inset 0 0 15px rgba(0,255,102,0.15);
+
+    font-size: 18px;
+    color: #00ff66;
+}
+#scoreBox,
+#hiscoreBox,
+#userBox {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(0,255,102,0.4);
+    font-family: Algerian;
+    letter-spacing: 1px;
+}
+
+.info-panel button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+
+    background: linear-gradient(135deg, #00ff99, #00cc66);
+    border: none;
+    border-radius: 8px;
+
+    font-family: Algerian;
+    font-size: 16px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px #00ff66,
+        0 0 20px rgba(0,255,102,0.6);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.info-panel button:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 15px #00ff66,
+        0 0 30px rgba(0,255,102,0.8);
+}
+
+@keyframes glowPulse {
+    0%   { box-shadow: 0 0 6px #00ff66; }
+    50%  { box-shadow: 0 0 14px #00ff66; }
+    100% { box-shadow: 0 0 6px #00ff66; }
+}
+
+.head,
+.snake {
+    animation: glowPulse 1.5s infinite;
+}
+@keyframes borderPulse {
+    0%   { box-shadow: 0 0 12px #00ff66, inset 0 0 20px rgba(0,255,102,0.2); }
+    50%  { box-shadow: 0 0 28px #00ff66, inset 0 0 35px rgba(0,255,102,0.35); }
+    100% { box-shadow: 0 0 12px #00ff66, inset 0 0 20px rgba(0,255,102,0.2); }
+}
+
+#board {
+    animation: borderPulse 2s infinite;
+}
